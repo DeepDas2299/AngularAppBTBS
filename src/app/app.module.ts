@@ -7,8 +7,6 @@ import { JourneyComponent } from './journey/journey.component';
 import { JourneyDetailsComponent } from './journey-details/journey-details.component';
 import { TicketBookComponent } from './ticket-book/ticket-book.component';
 import { FormsModule } from '@angular/forms';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { BusComponent } from './bus/bus.component';
 import { CreateBusComponent } from './create-bus/create-bus.component';
@@ -27,7 +25,6 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HeaderComponent } from './header/header.component';
 import { MyTicketsComponent } from './my-tickets/my-tickets.component';
-import { ProfileInfoComponent } from './profile-info/profile-info.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -38,7 +35,6 @@ import { DiscountComponent } from './discount/discount.component';
 import { DiscountCreateComponent } from './discount-create/discount-create.component';
 import { DiscountListComponent } from './discount-list/discount-list.component';
 import { DiscountDeleteComponent } from './discount-delete/discount-delete.component';
-import { HomeMainComponent } from './home-main/home-main.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
@@ -49,8 +45,6 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     JourneyComponent,
     JourneyDetailsComponent,
     TicketBookComponent,
-    NavbarComponent,
-    HomeComponent,
     MyprofileComponent,
     BusComponent,
     CreateBusComponent,
@@ -67,7 +61,6 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     LogoutComponent,
     HeaderComponent,
     MyTicketsComponent,
-    ProfileInfoComponent,
     EditProfileComponent,
     PageNotFoundComponent,
     GlobalErrorHandlerComponent,
@@ -75,7 +68,6 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     DiscountCreateComponent,
     DiscountListComponent,
     DiscountDeleteComponent,
-    HomeMainComponent,
     ContactUsComponent
 
   ],
