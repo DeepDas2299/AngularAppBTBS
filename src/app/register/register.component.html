@@ -1,0 +1,116 @@
+<div class="container-fluid login-container">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-md-6 login-form-1">
+      <h3 class="text-muted">Register</h3>
+      <form #registrationForm="ngForm">
+
+        <div class="form-floating">
+          <input type="text" class="form-control" id="Fname" required [(ngModel)]="register.fname" name="txtFname"
+            #Fname="ngModel" id="txtFname" pattern="^[a-zA-Z\s]{1,15}$">
+          <label>First Name</label>
+        </div>
+        <div class=" text-danger fs-6" [class.d-none]="Fname.valid || Fname.untouched || !Fname.errors">
+          *Please enter a valid name (Must be 4-15 letters long)
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="Mname" [(ngModel)]="register.mname" name="txtMname"
+            #Mname="ngModel" pattern="^[a-zA-Z\s]{0,15}$">
+          <label>Middle Name</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="Mname.valid || Mname.untouched || !Mname.errors">
+          Please enter a valid name (Maximum of 15 letters long)
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="Lname" required [(ngModel)]="register.lname" name="txtLname"
+            #Lname="ngModel" pattern="^[a-zA-Z\s]{1,15}$">
+          <label>Last Name</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="Lname.valid || Lname.untouched || !Lname.errors">
+          *Please enter a valid name (Must be 4-15 letters long)
+        </div>
+        <div class="form-group" formGroupName="address">
+          <div class="form-floating"><input type="text" class="form-control" id="streetName" required
+              [(ngModel)]="register.address.streetName" name="txtStreetName" #streetName="ngModel" pattern="^.{1,30}$">
+            <label>Street
+              Name</label></div>
+          <div class="text-danger fs-6" [class.d-none]="streetName.valid || streetName.untouched || !streetName.errors">
+            *Please enter a Street Name (Maximum of 30 characters long)
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="city" required [(ngModel)]="register.address.city"
+              name="txtCity" #city="ngModel" pattern="^.{1,30}$"> <label>City</label></div>
+          <div class="text-danger fs-6" [class.d-none]="city.valid || city.untouched || !city.errors">
+            *Please enter a City (Maximum of 30 characters long)
+          </div>
+          <div class="form-floating"> <input type="text" class="form-control" id="state" required
+              [(ngModel)]="register.address.state" name="txtState" #state="ngModel" pattern="^.{1,30}$">
+            <label>State</label></div>
+          <div class="text-danger fs-6" [class.d-none]="state.valid || state.untouched || !state.errors">
+            *Please enter a State (Maximum of 30 characters long)
+          </div>
+          <div class="form-floating">
+            <input type="number" class="form-control" id="zipcode" required [(ngModel)]="register.address.zipcode"
+              name="txtZipCode" #zipcode="ngModel"> <label>Zipcode</label></div>
+          <div class="text-danger fs-6" [class.d-none]="zipcode.valid || zipcode.untouched || !zipcode.errors">
+            *Please enter a valid Zipcode
+          </div>
+        </div>
+        <div class="form-floating">
+          <input type="number" class="form-control" id="phonenumber" required [(ngModel)]="register.phone"
+            name="phonenumber" #phonenumber="ngModel" pattern="[0-9]{10}">
+          <label>Phone</label>
+        </div>
+        <div class="text-danger fs-6"
+          [class.d-none]="phonenumber.valid || phonenumber.untouched || !phonenumber.errors">
+          *Please enter a valid Phone no.(must be 10 digits long)
+        </div>
+        <div class="form-floating">
+          <input type="email" class="form-control" id="Email" required [(ngModel)]="register.emailId" name="Email"
+            #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+          <label>Email</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="email.valid || email.untouched || !email.errors">
+          *Please enter a valid email
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="password" required [(ngModel)]="register.password"
+            name="password" #password="ngModel" pattern="^.{4,30}$">
+          <label>Password</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="password.valid || password.untouched">
+          *Please enter a password (Must be 4-30 characters long)
+        </div>
+        <div class="form-floating">
+
+          <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" #gender="ngModel"
+            [(ngModel)]="register.gender" name="txtgender" required>
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+          </select>
+          <label for="name">Gender</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="gender.valid || gender.untouched">
+          *Please choose Gender
+        </div>
+        <div class="form-floating">
+
+          <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" #role="ngModel"
+            [(ngModel)]="roleIndex" name="txtrole" id="txtrole" required>
+            <option value="" selected>Choose Role</option>
+            <option [value]="i" *ngFor="let role of roleList; index as i">{{role.roleName | titlecase}}</option>
+          </select>
+          <label for="txtrole">Role</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="role.valid || role.untouched">
+          *Please choose Role
+        </div>
+        <div class="form-group text-center">
+          <input type="submit" class="btnSubmit" value="Register"
+            [disabled]="!registrationForm.form.valid  || isLoading" (click)="onRegister()"
+            [class.disabled-btn]="!registrationForm.form.valid || isLoading" />
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

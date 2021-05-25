@@ -1,0 +1,123 @@
+<div class="container h-100">
+  <div class="row h-100  mt-4">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <b>Are you sure you want to <span style="color: rgb(0, 156, 60);">book</span> this Ticket?</b>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+              [disabled]="!arePassengerDetailsValid || isLoading" (click)="bookTicket()">Confirm
+              Booking</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col col-12 col-lg-4 d-flex  align-items-center">
+      <div class="card" style="width: 100%;">
+        <div class="card-body text-center">
+          <b>
+            <h3 class="card-title">Confirm Ticket</h3>
+          </b>
+          <small class="card-subtitle mb-2 other-info text-primary">*Please recheck the Details before
+            Booking</small><br><br>
+          <a class="px-5 text-white fw-bold confirm-button mx-auto" style="width: 12.5rem; " data-bs-toggle="modal"
+            data-bs-target="#exampleModal">Book
+            Ticket</a>
+        </div>
+      </div>
+    </div>
+    <div class="col col-12 col-lg-8">
+      <div class="row">
+        <div class="col col-12">
+          <div class="row journey-details">
+            <div class="card" style="width: 100%;">
+              <div class="card-body touring-details">
+                <b>
+                  <h3 class="card-title">{{bookingRequest.journey.bus.busName}}</h3>
+                </b>
+                <small class="card-subtitle mb-2 text-muted other-info">{{bookingRequest.journey.bus.busType}}</small>
+                <div class="timing-details">
+                  <h3 class="d-flex">
+                    <div class="hr mr-5"><strong>{{startingTime}}</strong>, <span
+                        class="text-muted fs-6 ">{{date}}</span></div>
+                    <div><strong>{{endingTime}}</strong>, <span class="text-muted fs-6">{{date}}</span></div>
+                  </h3>
+                  <div class="place d-flex ">
+                    <div class="hr2"><span class="text-muted fs-6">{{bookingRequest.journey.source}}</span><br><small
+                        class="text-muted">{{pickupDetail.key}}</small>
+                    </div>
+                    <div><span class="text-muted fs-6">{{bookingRequest.journey.dest}}</span><br><small
+                        class="text-muted">{{dropDetail.key}}</small>
+                    </div>
+                  </div>
+                  <br><b>{{bookingRequest.seatsToBook.length}} Seats Selected </b><b>(₹{{bookingRequest.price}})</b>
+                  <div class="d-flex flex-row">
+                    <b *ngFor="let seat of bookingRequest.seatsToBook">S{{seat}}&nbsp;</b>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col col-12">
+          <div class="row">
+
+            <div class="card" style="width: 100%;" *ngFor="let seat of bookingRequest.seatsToBook;  index as i">
+              <div class="card-body touring-details">
+                <b>
+                  <h5 class="card-title mb-4">Add Passenger Details</h5>
+                </b>
+                <div class="row">
+                  <div class="card passenger-details" style="width: 100%;">
+                    <div class="card-body touring-details">
+                      <b>Passenger {{i+1}}</b>
+                      <div class="input-group input-group-sm mt-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Name</span><input type="text"
+                          class="form-control" placeholder="Enter Name" [(ngModel)]="passengerList[i].name"
+                          #name="ngModel" required (change)="checkPassengerDetails()">
+                      </div>
+                      <div class="text-danger fs-6" [class.d-none]="name.valid || name.untouched">
+                        *Please enter valid Name
+                      </div>
+                      <div class="input-group input-group-sm mt-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Age</span>
+                        <input type="number" class="form-control" min="1" [(ngModel)]="passengerList[i].age"
+                          #age="ngModel" required (change)="checkPassengerDetails()">
+                      </div>
+                      <div class="text-danger fs-6" [class.d-none]="age.valid || age.untouched">
+                        *Please enter valid age
+                      </div>
+                      <div class="input-group input-group-sm mt-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Gender</span>
+                        <select class="form-select form-select-sm" [(ngModel)]="passengerList[i].gender"
+                          #gender="ngModel" required (change)="checkPassengerDetails()">
+                          <option value="" selected>Select Gender</option>
+                          <option value="MALE">Male</option>
+                          <option value="FEMALE">Female</option>
+                        </select>
+                      </div>
+                      <div class="text-danger fs-6" [class.d-none]="gender.valid || gender.untouched">
+                        *Please select Gender
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

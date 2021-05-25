@@ -1,0 +1,210 @@
+<section id="hero" class="d-flex align-items-center">
+  <div class="container-fluid journey-container d-flex align-items-center col-12">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col col-sm-12 col-md-10 journey-search ">
+        <div class="container-fluid">
+          <div class="row d-flex align-items-center justify-content-around journey-search-container">
+            <div class="col-12 text-center">
+              <small class="text-muted font-weight-bold">Book Bus Tickets</small>
+            </div>
+            <div class="row col-12 d-flex align-items-stretch search-container">
+              <div class="col col-12 col-sm-12 col-lg-4 h-100 search-box">
+                <div class="card">
+                  <div class="card-body">
+                    <b><small class="text-muted">From</small></b>
+                    <select class="form-select form-select-sm mb-3" #source="ngModel" [(ngModel)]="searchDetails.source"
+                      name="txtsource" required>
+                      <option selected value="">Select Source</option>
+                      <option [value]="source" *ngFor="let source of sourceSample">{{source}}</option>
+                    </select>
+                    <small class="text-muted">India</small>
+                  </div>
+
+                </div>
+
+
+              </div>
+              <div class="col col-12 col-sm-12 col-lg-4 h-100 search-box">
+                <div class="card">
+                  <div class="card-body">
+                    <b><small class="text-muted">To</small></b>
+                    <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" #dest="ngModel"
+                      [(ngModel)]="searchDetails.dest" name="txtdest" required>
+                      <option selected value="">Select Destination</option>
+                      <option [value]="dest" *ngFor="let dest of destSample">{{dest}}</option>
+
+                    </select>
+                    <small class="text-muted">India</small>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col col-12 col-sm-12 col-lg-4 h-100 search-box">
+                <div class="card">
+                  <div class="card-body">
+                    <b><small class="text-muted">TRAVEL DATE</small></b>
+                    <div class="input-group mb-3">
+                      <input type="date" class="form-control" placeholder="Choose Dest" id='date'
+                        [(ngModel)]="searchDetails.date" #jdate="ngModel">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col col-12 col-sm-12 text-center">
+              <a routerLink="/app-journey-details/{{searchDetails.source}}/{{searchDetails.dest}}/{{searchDetails.date}}"
+                class="button" (click)="onSubmit()">Search</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h1>Welcome to My-Bus</h1>
+    <h2>Travel in the best way</h2>
+    <a href="#about" class="btn-get-started scrollto">Get Started</a>
+  </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+  <!-- ======= Why Us Section ======= -->
+  <section id="why-us" class="why-us">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-4 d-flex align-items-stretch">
+          <div class="content">
+            <h3>Why Choose My-Bus?</h3>
+            <p>
+              MyBus has improved regional travel for millions of riders by creating an experience that people actually
+              like. Available in 100+ India locations, they have changed consumer expectations for intercity bus travel,
+              as
+              reflected in their 4.4/5-star rating with over 8,000 reviews.
+            </p>
+            <div class="text-center">
+              <a href="/app-home" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 d-flex align-items-stretch">
+          <div class="icon-boxes d-flex flex-column justify-content-center">
+            <div class="row">
+              <div class="col-xl-4 d-flex align-items-stretch">
+                <div class="icon-box mt-4 mt-xl-0">
+
+                  <h4>We believe movement is essential to human nature.</h4>
+                  <p>We've created the systems that will change the way people move together</p>
+                </div>
+              </div>
+              <div class="col-xl-4 d-flex align-items-stretch">
+                <div class="icon-box mt-4 mt-xl-0">
+
+                  <h4>Providing secure and comfortable travel to its passengers</h4>
+                  <p>Customer safety and on-time services are at the forefront of My-Bus operations.</p>
+                </div>
+              </div>
+              <div class="col-xl-4 d-flex align-items-stretch">
+                <div class="icon-box mt-4 mt-xl-0">
+
+                  <h4>Vibrant and community-minded network of local bus operators</h4>
+                  <p>Easy online booking, customer-centric policies, high quality operators, and a technology-oriented
+                    approach</p>
+                </div>
+              </div>
+            </div>
+          </div><!-- End .content-->
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Why Us Section -->
+
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
+          <a href="https://www.youtube.com" class="glightbox play-btn mb-4"></a>
+        </div>
+
+        <div
+          class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+          <h3>My-Bus has created the platform and demand for thousands of bus trips across 40 states and provinces</h3>
+          <p>The company provides a single technology platform affecting the private bus industry's 700M annual
+            passenger trips.</p>
+
+          <div class="icon-box">
+            <div class="icon"><img src="../../assets/img/secure.png" width="50px"></div>
+            <h4 class="title"><a href="">Efficient Economy</a></h4>
+            <p class="description">Having efficiently utilized this capital to develop a managed marketplace for buses,
+              the companies come together to accelerate the disruption of the bus industry.</p>
+          </div>
+
+          <div class="icon-box">
+            <div class="icon"><img src="../../assets/img/ww.png" width="50px"></div>
+            <h4 class="title"><a href="">Safe Travelling</a></h4>
+            <p class="description">Clearly laid out guidelines followed diligently and strictly for safe travel</p>
+          </div>
+
+          <div class="icon-box">
+            <div class="icon"><img src="../../assets/img/tracking.png" width="50px"></div>
+            <h4 class="title"><a href="">Experienced Drivers</a></h4>
+            <p class="description">Well-experienced drivers who have in-depth knowledge of different routes</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End About Section -->
+
+  <!-- ======= Counts Section ======= -->
+  <section id="counts" class="counts">
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6">
+          <div class="count-box">
+            <div class="icon"><img src="../../assets/img/like.png" width="50px"></div>
+            <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1"
+              class="purecounter"></span>
+            <p>Always carry your own face masks and hand sanitizers.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+          <div class="count-box">
+            <div class="icon"><img src="../../assets/img/like.png" width="50px"></div>
+            <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1"
+              class="purecounter"></span>
+            <p>Always wear your masks when inside the bus and ensure you cover your nose properly.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+          <div class="count-box">
+            <div class="icon invert"><img src="../../assets/img/like.png" width="50px"></div>
+            <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1"
+              class="purecounter"></span>
+            <p>Do not travel if you are feeling unwell or are displaying symptoms of COVID-19.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+          <div class="count-box">
+            <div class="icon invert"><img src="../../assets/img/like.png" width="50px"></div>
+            <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1"
+              class="purecounter"></span>
+            <p>Do not take off your mask unless necessary while inside the bus.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Counts Section -->

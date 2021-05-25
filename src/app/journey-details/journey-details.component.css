@@ -1,0 +1,127 @@
+.card {
+  min-height: 13rem;
+  padding: 0;
+}
+
+.timing-details {
+  margin-top: 1rem;
+}
+
+.hr {
+  position: relative;
+  margin-right: 7rem
+}
+
+.hr::after {
+  content: '';
+  width: 5rem;
+  border-bottom: solid 1px rgb(199, 199, 199);
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  z-index: 1;
+}
+
+.verified {
+  border-radius: 1rem;
+  font-size: small;
+  align-self: center;
+}
+
+.touring-details:hover {
+  background-color: rgb(245, 245, 255);
+}
+
+.price-info-container {
+  background-color: rgb(245, 245, 245);
+}
+
+.seat-button {
+  text-decoration: none;
+  border: none;
+  background: linear-gradient(to right, rgb(83, 151, 240), rgb(23, 95, 250));
+  padding: 0.3rem 3.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  border-radius: 1.5rem;
+}
+
+.seat-booked {
+  cursor: none;
+  background: rgb(143, 143, 143);
+}
+
+.book-button {
+  text-decoration: none;
+  width: 15rem;
+  border: none;
+  background: linear-gradient(to right, rgb(83, 151, 240), rgb(23, 95, 250));
+  padding: 0.3rem 3.5rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border-radius: 1.5rem;
+  cursor: pointer
+}
+
+.pickup-list,
+.drop-list {
+  min-height: 10rem;
+}
+
+
+
+.bus {
+  width: 26rem;
+  height: 10rem;
+  border: 0.5px solid rgb(187, 187, 187);
+  border-radius: 0.4rem;
+
+}
+
+.seat {
+  margin: 0.5rem 0.5rem;
+  height: 1.2rem;
+  width: 2.8rem;
+  border-radius: 0.3rem;
+  border: 1.5px solid rgb(197, 197, 197);
+  cursor: pointer;
+
+}
+
+.seat {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.seat-selected {
+  background-color: rgb(153, 194, 153);
+}
+
+.info {
+  font-size: 1rem;
+  color: rgb(67, 97, 231);
+  line-height: 0.6rem;
+}
+
+.disabled-btn {
+  cursor: unset;
+  background: linear-gradient(to right, rgb(165, 165, 165), rgb(131, 131, 131));
+}
+
+@media screen and (max-width: 600px) {
+
+  .hr::after {
+    display: none;
+  }
+
+  .timing-details h4 {
+    font-size: 1rem;
+  }
+
+}
+
+.no-results {
+  font-size: 3rem;
+}

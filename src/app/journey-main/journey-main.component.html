@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="row h-100">
+    <div class="col col-12 col-lg-2 navigation px-0 h-100">
+      <nav class="navbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li> <a routerLink="/app-journey-main/app-journey-create" class="nav-item nav-link">Add Journey</a></li>
+          <li> <a routerLink="/app-journey-main/app-journey-list" class="nav-item nav-link">Search Journeys</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col col-12 col-lg-10 mx-auto overflow-auto journey-dashboard " style="max-height:97%;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

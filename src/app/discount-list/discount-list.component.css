@@ -1,0 +1,44 @@
+.text-gray {
+  color: #aaa;
+}
+
+.busID {
+  font-size: 2rem;
+  border: 2px solid rgb(255, 255, 255);
+  padding: 2px 7px;
+  border-radius: 0.4rem;
+}
+
+li {
+  margin-bottom: 5px;
+  background: #287ad1;
+  color: white;
+  transition: 0.2s ease;
+}
+
+li:hover {
+  background: #4a8ed8;
+}
+
+a {
+  font-size: 0.9rem;
+  margin-right: 1rem;
+  text-decoration: none;
+  color: white;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 2px 9px;
+  border-radius: 0.6rem;
+  transition: 0.2s ease all;
+}
+
+a:hover {
+  color: #1963b3;
+  background-color: white;
+}
+
+.login-form-2 .disabled-btn {
+  font-weight: 600;
+  color: #9099a1;
+  background-color: rgb(206, 206, 206);
+  cursor: auto;
+}

@@ -1,0 +1,42 @@
+<div class="container-fluid login-container">
+  <div class="row d-flex h-100 justify-content-center align-items-center">
+    <div class="col-md-6 login-form-2 ">
+      <h3>Add Discount
+        <hr>
+      </h3>
+      <form #createDiscountForm="ngForm">
+
+        <div class="form-floating">
+          <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" #bus="ngModel"
+            [(ngModel)]="reqDiscount.bus" name="txtbus" required id="bus"
+            [class.is-invalid]="!(bus.valid || bus.untouched)">
+            <option selected value="">Select Bus</option>
+            <option [value]="i" *ngFor="let bus of busList; index as i">{{bus.busName}}</option>
+          </select>
+          <label for="bus">Bus</label>
+        </div>
+        <div class="form-floating">
+          <input type="number" class="form-control" placeholder="Discount Price" id='sdate'
+            [(ngModel)]="reqDiscount.price" #price="ngModel" min="300" max="1000" name="price">
+          <label for="price">Discount Price</label>
+        </div>
+        <div class="form-floating">
+          <input type="date" class="form-control" id='sdate' [(ngModel)]="reqDiscount.sdate" #sdate="ngModel"
+            name="sdate">
+          <label for="sdate">Starting Date</label>
+        </div>
+        <div class="form-floating">
+          <input type="date" class="form-control" placeholder="Choose Ending Date" id='edate'
+            [(ngModel)]="reqDiscount.edate" #edate="ngModel" name="edate">
+          <label for="edate">Ending Date</label>
+        </div>
+        <div class="form-group text-center">
+          <input type="submit" class="btnSubmit" value="Add Discount"
+            [disabled]="!createDiscountForm.form.valid || isLoading" (click)="onSubmit()"
+            [class.disabled-btn]="!createDiscountForm.form.valid || isLoading" />
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

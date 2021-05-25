@@ -1,0 +1,426 @@
+<!-- <h3>Create Journey</h3>
+<div class="container">
+  <div class="row">
+    <div class="col col-12">
+      <div style="width: 100%;">
+        <form #createJourneyForm="ngForm">
+          <div class="form-group">
+            <label for="name">Source</label>
+            <select class="form-select form-select-sm mb-3" #source="ngModel" [(ngModel)]="journey.source"
+              name="txtsource" required>
+              <option selected value="">Select Source</option>
+              <option [value]="place" *ngFor="let place of placeList">{{place}}</option>
+            </select>
+          </div>
+          <div class="mt-0" [class.d-none]="source.valid || source.untouched" style="color: red;font-size: 0.8rem;">
+            *Please
+            Choose Valid Source
+          </div>
+          <div class="form-group">
+            <label for="name">Destination</label>
+            <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" #dest="ngModel"
+              [(ngModel)]="journey.dest" name="txtdest" required>
+              <option selected value="">Select Destination</option>
+              <option [value]="place" *ngFor="let place of placeList">{{place}}</option>
+
+            </select>
+          </div>
+          <div class="mt-0" [class.d-none]="dest.valid || dest.untouched" style="color: red;font-size: 0.8rem;">
+            *Please
+            choose valid Destination
+          </div>
+          <div class="form-group">
+            <label for="name">Bus</label>
+            <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" #bus="ngModel"
+              [(ngModel)]="journey.bus" name="txtbus" required>
+              <option selected value="">Select Bus</option>
+              <option [value]="i" *ngFor="let bus of busList; index as i">{{bus.busName}}</option>
+            </select>
+          </div>
+          <div class="mt-0" [class.d-none]="bus.valid || bus.untouched" style="color: red;font-size: 0.8rem;">
+            *Please
+            choose valid Bus
+          </div>
+          <div class="form-group">
+            <label for="name">Choose Journey Date</label>
+            <div class="input-group mb-3">
+              <input type="date" class="form-control" placeholder="Date" [(ngModel)]="journey.date"
+                name="txtjourneydate" #jdate="ngModel" required>
+            </div>
+
+          </div>
+          <div class="mt-0" [class.d-none]="jdate.valid || jdate.untouched" style="color: red;font-size: 0.8rem;">
+            *Please
+            choose valid Date
+          </div>
+
+          <div class="card mt-3">
+            <div class="card-body">
+              <strong>Choose Pickup Details :</strong>
+
+              <hr>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Place</th>
+                    <th scope="col">Hours</th>
+                    <th scope="col">Minutes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control form-control-sm" placeholder="Pickup place 1"
+                          name="txtpickplace1" required [(ngModel)]="pickupDetail[0].pickupPlace" #pickPlace1="ngModel"
+                          [class.is-invalid]="!(pickPlace1.valid || pickPlace1.untouched)">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <select class="form-select form-select-sm mb-3" aria-label="size 3 select example"
+                          name="txthour1" required [(ngModel)]="pickupDetail[0].hour" #pickHour1="ngModel"
+                          [class.error-feild]="" [class.is-invalid]="!(pickHour1.valid || pickHour1.untouched)">
+                          <option [value]="hour" *ngFor="let hour of hours">{{hour}}
+                          </option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <select class="form-select form-select-sm mb-3" aria-label="size 3 select example"
+                          name="txttime1" required [(ngModel)]="pickupDetail[0].minute" #pickMin1="ngModel"
+                          [class.is-invalid]="!(pickMin1.valid || pickMin1.untouched)">
+                          <option [value]="minute" *ngFor="let minute of minutes">
+                            {{minute}}</option>
+                        </select>
+                      </div>
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control form-control-sm" placeholder="Pickup place 2"
+                          name="txtpickplace2" required [(ngModel)]="pickupDetail[1].pickupPlace" #pickPlace2="ngModel"
+                          [class.is-invalid]="!(pickPlace2.valid || pickPlace2.untouched)">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <select class="form-select form-select-sm mb-3" aria-label="size 3 select example"
+                          name="txthour2" required [(ngModel)]="pickupDetail[1].hour" #pickHour2="ngModel"
+                          [class.is-invalid]="!(pickHour2.valid || pickHour2.untouched)">
+                          <option [value]="hour" *ngFor="let hour of hours" [ngValue]="hour">{{hour}}</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <select class="form-select form-select-sm mb-3" aria-label="size 3 select example"
+                          name="txttime2" required [(ngModel)]="pickupDetail[1].minute" #pickMin2="ngModel"
+                          [class.is-invalid]="!(pickMin2.valid || pickMin2.untouched)">
+                          <option [value]="minute" *ngFor="let minute of minutes">{{minute}}</option>
+                        </select>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <strong>Choose Dropup Details :</strong>
+              <hr>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Place</th>
+                    <th scope="col">Hours</th>
+                    <th scope="col">Minutes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control form-control-sm" placeholder="Drop place 1"
+                          name="txtdropplace1" required [(ngModel)]="dropDetail[0].dropPlace" #dropPlace1="ngModel"
+                          [class.is-invalid]="!(dropPlace1.valid || dropPlace1.untouched)">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <select class="form-select form-select-sm mb-3" aria-label="size 3 select example"
+                          name="txtdrophour1" required [(ngModel)]="dropDetail[0].hour" #dropHour1="ngModel"
+                          [class.is-invalid]="!(dropHour1.valid || dropHour1.untouched)">
+                          <option [value]="hour" *ngFor="let hour of hours">{{hour}}</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <select class="form-select form-select-sm mb-3" aria-label="size 3 select example"
+                          name="txtdroptime1" required [(ngModel)]="dropDetail[0].minute" #dropMin1="ngModel"
+                          [class.is-invalid]="!(dropMin1.valid || dropMin1.untouched)">
+                          <option [value]="minute" *ngFor="let minute of minutes">{{minute}}</option>
+                        </select>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control form-control-sm" placeholder="Drop place 2"
+                          name="txtdroplace2" required [(ngModel)]="dropDetail[1].dropPlace" #dropPlace2="ngModel"
+                          [class.is-invalid]="!(dropPlace2.valid || dropPlace2.untouched)">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <select class="form-select form-select-sm mb-3" aria-label="size 3 select example"
+                          name="txtdrophour2" required [(ngModel)]="dropDetail[1].hour" #dropHour2="ngModel"
+                          [class.is-invalid]="!(dropHour2.valid || dropHour2.untouched)">
+                          <option [value]="hour" *ngFor="let hour of hours">{{hour}}</option>
+                        </select>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <select class="form-select form-select-sm mb-3" aria-label="size 3 select example"
+                          name="txtdroptime2" required [(ngModel)]="dropDetail[1].minute" #dropMin2="ngModel"
+                          [class.is-invalid]="!(dropMin2.valid || dropMin2.untouched)">
+                          <option [value]="minute" *ngFor="let minute of minutes">{{minute}}</option>
+                        </select>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <button (click)="onSubmit()" type="submit" class="btn btn-success"
+            [disabled]="!createJourneyForm.form.valid">Submit</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div> -->
+<div class="container-fluid login-container">
+  <div class="row d-flex h-100 justify-content-center align-items-center w-100 mx-auto">
+    <div class="col-md-6 login-form-1 w-100 mx-auto">
+      <h3>Add Journey
+        <hr>
+      </h3>
+      <form #createJourneyForm="ngForm">
+        <div class="text-danger fs-6" [class.d-none]="source.valid || source.untouched">
+          *Please
+          Choose Source
+        </div>
+        <div class="form-floating">
+          <select class="form-select form-select-sm mb-3" #source="ngModel" [(ngModel)]="journey.source"
+            name="txtsource" required id="source" [class.is-invalid]="!(source.valid || source.untouched)">
+            <option selected value="">Select Source</option>
+            <option [value]="place" *ngFor="let place of placeList">{{place}}</option>
+          </select>
+          <label for="source">Source</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="dest.valid || dest.untouched">
+          *Please
+          Choose Destination
+        </div>
+        <div class="form-floating">
+          <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" #dest="ngModel"
+            [(ngModel)]="journey.dest" name="txtdest" required id="dest"
+            [class.is-invalid]="!(dest.valid || dest.untouched)">
+            <option selected value="">Select Destination</option>
+            <option [value]="place" *ngFor="let place of placeList">{{place}}</option>
+          </select>
+          <label for="dest">Destination</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="bus.valid || bus.untouched">
+          *Please
+          Choose Bus
+        </div>
+        <div class="form-floating">
+          <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" #bus="ngModel"
+            [(ngModel)]="journey.bus" name="txtbus" required id="bus"
+            [class.is-invalid]="!(bus.valid || bus.untouched)">
+            <option selected value="">Select Bus</option>
+            <option [value]="i" *ngFor="let bus of busList; index as i">{{bus.busName}}</option>
+          </select>
+          <label for="bus">Bus</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="jdate.valid || jdate.untouched">
+          *Please
+          Choose Journey Date
+        </div>
+        <div class="form-floating">
+          <input type="date" class="form-control" placeholder="Date" [(ngModel)]="journey.date" name="txtjourneydate"
+            #jdate="ngModel" required id="jdate">
+          <label id="lbljdate" for="jdate">Choose Journey Date</label>
+        </div>
+
+        <strong>Choose Pickup Details :</strong>
+        <div class="text-danger fs-6" [class.d-none]="pickPlace1.valid || pickPlace1.untouched">
+          *Please
+          enter valid Pickup Place 1
+        </div>
+        <div class="form-floating">
+
+          <input type="text" class="form-control form-control-sm" name="txtpickplace1" required
+            [(ngModel)]="pickupDetail[0].pickupPlace" #pickPlace1="ngModel" id="pickupPlace1"
+            [class.is-invalid]="!(pickPlace1.valid || pickPlace1.untouched)">
+
+          <label for="pickupPlace1">Pickup Place 1</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="pickHour1.valid || pickHour1.untouched">
+          *Please
+          choose Pick-Hour 1
+        </div>
+        <div class="form-group">
+          <div class="form-floating">
+            <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" name="txthour1" required
+              [(ngModel)]="pickupDetail[0].hour" #pickHour1="ngModel"
+              [class.is-invalid]="!(pickHour1.valid || pickHour1.untouched)">
+              <option [value]="hour" *ngFor="let hour of hours">{{hour}}
+              </option>
+            </select>
+            <label for="pickHour1">Hour</label>
+          </div>
+          <div class="text-danger fs-6" [class.d-none]="pickMin1.valid || pickMin1.untouched">
+            *Please
+            choose Pick-Minute 1
+          </div>
+          <div class="form-floating">
+            <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" name="txttime1" required
+              [(ngModel)]="pickupDetail[0].minute" #pickMin1="ngModel"
+              [class.is-invalid]="!(pickMin1.valid || pickMin1.untouched)">
+              <option [value]="minute" *ngFor="let minute of minutes">
+                {{minute}}</option>
+            </select>
+            <label for="pickMin1">Minute</label>
+          </div>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="pickPlace2.valid || pickPlace2.untouched">
+          *Please
+          enter valid Pickup Place 2
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control form-control-sm" name="txtpickplace2" required
+            [(ngModel)]="pickupDetail[1].pickupPlace" #pickPlace2="ngModel"
+            [class.is-invalid]="!(pickPlace2.valid || pickPlace2.untouched)">
+          <label for="txtpickPlace2">Pickup Place 2</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="pickHour2.valid || pickHour2.untouched">
+          *Please
+          choose Pick-Hour 2
+        </div>
+        <div class="form-floating">
+          <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" name="txthour2" required
+            [(ngModel)]="pickupDetail[1].hour" #pickHour2="ngModel"
+            [class.is-invalid]="!(pickHour2.valid || pickHour2.untouched)">
+            <option [value]="hour" *ngFor="let hour of hours" [ngValue]="hour">{{hour}}</option>
+          </select>
+          <label for="txthour2">Hour</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="pickMin2.valid || pickMin2.untouched">
+          *Please
+          choose Pick-Minute 2
+        </div>
+        <div class="form-floating">
+          <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" name="txtmin2" required
+            [(ngModel)]="pickupDetail[1].minute" #pickMin2="ngModel"
+            [class.is-invalid]="!(pickMin2.valid || pickMin2.untouched)">
+            <option [value]="minute" *ngFor="let minute of minutes">{{minute}}</option>
+          </select>
+          <label for="txtmin2">Minute</label>
+        </div>
+
+        <strong>Choose Drop Details :</strong>
+        <div class="text-danger fs-6" [class.d-none]="dropPlace1.valid || dropPlace1.untouched">
+          *Please
+          enter valid Drop Place 1
+        </div>
+        <div class="form-floating ">
+          <input type="text" class="form-control form-control-sm" name="txtdropplace1" required
+            [(ngModel)]="dropDetail[0].dropPlace" #dropPlace1="ngModel"
+            [class.is-invalid]="!(dropPlace1.valid || dropPlace1.untouched)">
+          <label for="txtdroplace1">Drop Place 1</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="dropHour1.valid || dropHour1.untouched">
+          *Please
+          choose Drop-Hour 1
+        </div>
+        <div class="form-floating">
+          <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" name="txtdrophour1"
+            required [(ngModel)]="dropDetail[0].hour" #dropHour1="ngModel"
+            [class.is-invalid]="!(dropHour1.valid || dropHour1.untouched)">
+            <option [value]="hour" *ngFor="let hour of hours">{{hour}}</option>
+          </select>
+          <label for="txtdrophour1">Hour</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="dropMin1.valid || dropMin1.untouched">
+          *Please
+          choose Drop-Minute 1
+        </div>
+        <div class="form-floating">
+          <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" name="txtdroptime1"
+            required [(ngModel)]="dropDetail[0].minute" #dropMin1="ngModel"
+            [class.is-invalid]="!(dropMin1.valid || dropMin1.untouched)">
+            <option [value]="minute" *ngFor="let minute of minutes">{{minute}}</option>
+          </select>
+          <label for="txtdroptime1">Minute</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="dropPlace2.valid || dropPlace2.untouched">
+          *Please
+          enter valid Drop Place 2
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control form-control-sm" name="txtdroplace2" required
+            [(ngModel)]="dropDetail[1].dropPlace" #dropPlace2="ngModel"
+            [class.is-invalid]="!(dropPlace2.valid || dropPlace2.untouched)">
+          <label for="txtdropplace2">Drop Place 2</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="dropHour2.valid || dropHour2.untouched">
+          *Please
+          choose Drop-Hour 2
+        </div>
+        <div class="form-floating">
+          <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" name="txtdrophour2"
+            required [(ngModel)]="dropDetail[1].hour" #dropHour2="ngModel"
+            [class.is-invalid]="!(dropHour2.valid || dropHour2.untouched)">
+            <option [value]="hour" *ngFor="let hour of hours">{{hour}}</option>
+          </select>
+          <label for="txtdrophour2">Hour</label>
+        </div>
+        <div class="text-danger fs-6" [class.d-none]="dropMin2.valid || dropMin2.untouched">
+          *Please
+          choose Drop-Minute 2
+        </div>
+        <div class="form-floating">
+          <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" name="txtdroptime2"
+            required [(ngModel)]="dropDetail[1].minute" #dropMin2="ngModel"
+            [class.is-invalid]="!(dropMin2.valid || dropMin2.untouched)">
+            <option [value]="minute" *ngFor="let minute of minutes">{{minute}}</option>
+          </select>
+          <label for="txtdroptime2">Minute</label>
+        </div>
+
+
+
+        <div class="form-group text-center">
+          <input type="submit" class="btnSubmit" value="Add Journey"
+            [disabled]="!createJourneyForm.form.valid || isLoading" (click)="onSubmit()"
+            [class.disabled-btn]="!createJourneyForm.form.valid || isLoading" />
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

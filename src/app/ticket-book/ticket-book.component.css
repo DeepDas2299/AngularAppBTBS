@@ -1,0 +1,42 @@
+.hr {
+  position: relative;
+  margin-right: 7rem
+}
+
+.hr::after {
+  content: '';
+  width: 5rem;
+  border-bottom: solid 1px rgb(170, 170, 170);
+  position: absolute;
+  left: 110%;
+  top: 55%;
+  z-index: 1;
+}
+
+.hr2 {
+  margin-right: 13rem;
+}
+
+.passenger-details {
+  box-shadow: 1px 1px 3px rgb(201, 201, 201);
+}
+
+.passenger-head {
+  margin-bottom: 1rem;
+}
+
+.confirm-button {
+  text-decoration: none;
+  border: none;
+  background: linear-gradient(to right, rgb(83, 151, 240), rgb(23, 95, 250));
+  padding: 0.3rem 3.5rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border-radius: 1.5rem;
+  cursor: pointer;
+}
+
+.disabled-btn {
+  background: linear-gradient(to right, rgb(165, 165, 165), rgb(131, 131, 131));
+  cursor: auto;
+}

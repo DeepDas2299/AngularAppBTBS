@@ -1,0 +1,92 @@
+<div class="container-fluid update-container">
+  <div class="row h-100 justify-content-center align-items-center">
+    <form #editProfileForm="ngForm">
+
+      <div class="form-floating">
+        <input type="text" class="form-control" id="Fname" required [(ngModel)]="user.fname" name="txtFname"
+          placeholder="First Name" #Fname="ngModel" id="txtFname" pattern="^[a-zA-Z\s]{1,15}$">
+        <label for="Fname">First Name</label>
+      </div>
+      <div class=" text-danger fs-6" [class.d-none]="Fname.valid || Fname.untouched || !Fname.errors">
+        *Please enter a valid name (Must be 1-15 letters long)
+      </div>
+      <div class="form-floating">
+        <input type="text" class="form-control" id="Mname" [(ngModel)]="user.mname" name="txtMname"
+          placeholder="Middle Name" #Mname="ngModel" pattern="^[a-zA-Z\s]{0,15}$">
+        <label for="Mname">Middle Name</label>
+      </div>
+      <div class="text-danger fs-6" [class.d-none]="Mname.valid || Mname.untouched || !Mname.errors">
+        *Please enter a valid name (Maximum of 15 letters long)
+      </div>
+      <div class="form-floating">
+        <input type="text" class="form-control" id="Lname" required [(ngModel)]="user.lname" name="txtLname"
+          placeholder="Last Name" #Lname="ngModel" pattern="^[a-zA-Z\s]{1,15}$">
+        <label for="Lname">Last Name</label>
+      </div>
+      <div class="text-danger fs-6" [class.d-none]="Lname.valid || Lname.untouched || !Lname.errors">
+        *Please enter a valid name (Must be 1-15 letters long)
+      </div>
+      <div formGroupName="address">
+        <div class="form-floating"> <input type="text" class="form-control" id="streetName" required
+            [(ngModel)]="user.address.streetName" name="txtStreetName" placeholder="Street Name" #streetName="ngModel"
+            pattern="^.{1,30}$">
+          <label for="streetName">Street Name</label></div>
+        <div class="text-danger fs-6" [class.d-none]="streetName.valid || streetName.untouched || !streetName.errors">
+          *Please enter a Street Name (Maximum of 30 characters long)
+        </div>
+        <div class="form-floating"> <input type="text" class="form-control" id="city" required
+            [(ngModel)]="user.address.city" name="txtCity" placeholder="City" #city="ngModel" pattern="^.{1,30}$">
+          <label for="city">City</label></div>
+        <div class="text-danger fs-6" [class.d-none]="city.valid || city.untouched || !city.errors">
+          *Please enter a City (Maximum of 30 characters long)
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="state" required [(ngModel)]="user.address.state" name="txtState"
+            placeholder="State" #state="ngModel" pattern="^.{1,30}$">
+          <label for="state">State</label></div>
+        <div class="text-danger fs-6" [class.d-none]="state.valid || state.untouched || !state.errors">
+          *Please enter a State (Maximum of 30 characters long)
+        </div>
+        <div class="form-floating">
+          <input type="number" class="form-control" id="zipcode" required [(ngModel)]="user.address.zipcode"
+            name="txtZipCode" placeholder="ZipCode" #zipcode="ngModel">
+          <label for="zipcode">Zipcode</label></div>
+        <div class="text-danger fs-6" [class.d-none]="zipcode.valid || zipcode.untouched || !zipcode.errors">
+          *Please enter a valid Zipcode
+        </div>
+
+      </div>
+      <div class="form-floating">
+        <input type="number" class="form-control" id="phonenumber" required [(ngModel)]="user.phone" name="phonenumber"
+          placeholder="Phone Number" #phonenumber="ngModel" pattern="[0-9]{10}">
+        <label for="phoneno">Phone</label>
+      </div>
+      <div class="text-danger fs-6" [class.d-none]="phonenumber.valid || phonenumber.untouched || !phonenumber.errors">
+        *Please enter a valid Phone no.(must be 10 digits long)
+      </div>
+      <div class="form-floating">
+        <input type="email" class="form-control" id="email" readonly [ngModel]="user.emailId" name="Email"
+          placeholder="Email" email="ngModel">
+        <label for="email">Email</label>
+      </div>
+
+      <div class="form-floating">
+
+        <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" #gender="ngModel"
+          [(ngModel)]="user.gender" name="txtgender" id="gender" required>
+          <option value="MALE">Male</option>
+          <option value="FEMALE">Female</option>
+        </select>
+        <label for="gender">Gender</label>
+      </div>
+      <div class="text-danger fs-6" [class.d-none]="gender.valid || gender.untouched">
+        *Please choose Gender
+      </div>
+      <div class="form-group text-center">
+        <input type="submit" class="btnSubmit" value="Update" [disabled]="!editProfileForm.form.valid || isLoading"
+          (click)="onUpdate()" [class.disabled-btn]="!editProfileForm.form.valid || isLoading" />
+      </div>
+    </form>
+  </div>
+
+</div>

@@ -1,0 +1,156 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="col">
+      <form #createJourneyForm="ngForm">
+        <div class="form-group">
+          <label for="name">Source</label>
+          <select class="form-select form-select-sm mb-3" #source="ngModel" [(ngModel)]="searchDetails.source"
+            name="txtsource" required>
+            <option selected value="">Select Source</option>
+            <option [value]="place" *ngFor="let place of placeList">{{place}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="name">Destination</label>
+          <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" #dest="ngModel"
+            [(ngModel)]="searchDetails.dest" name="txtdest" required>
+            <option selected value="">Select Destination</option>
+            <option [value]="place" *ngFor="let place of placeList">{{place}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="name">Date</label>
+          <div class="input-group input-group-sm mb-3">
+            <input type="date" class="form-control" placeholder="Date" [(ngModel)]="searchDetails.date"
+              name="txtjourneydate" #jdate="ngModel" required>
+          </div>
+
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!createJourneyForm.form.valid"
+          (click)="onSubmit()">Submit</button>
+      </form>
+    </div>
+  </div>
+</div> -->
+<div class="container-fluid journey-container d-flex align-items-center">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col col-sm-12 col-md-10 journey-search ">
+      <div class="container-fluid">
+        <div class="row d-flex align-items-center justify-content-around journey-search-container">
+          <div class="row col-12 d-flex align-items-stretch search-container">
+            <div class="col col-12 col-sm-12 col-lg-4 h-100 search-box">
+              <div class="card">
+                <div class="card-body">
+                  <b><small class="text-muted">From</small></b>
+                  <select class="form-select form-select-sm mb-3" #source="ngModel" [(ngModel)]="searchDetails.source"
+                    name="txtsource" required>
+                    <option selected value="">Select Source</option>
+                    <option [value]="place" *ngFor="let place of placeList">{{place}}</option>
+                  </select>
+                  <small class="text-muted">India</small>
+                </div>
+
+              </div>
+
+
+            </div>
+            <div class="col col-12 col-sm-12 col-lg-4 h-100 search-box">
+              <div class="card">
+                <div class="card-body">
+                  <b><small class="text-muted">To</small></b>
+                  <select class="form-select form-select-sm mb-3" aria-label="size 3 select example" #dest="ngModel"
+                    [(ngModel)]="searchDetails.dest" name="txtdest" required>
+                    <option selected value="">Select Destination</option>
+                    <option [value]="place" *ngFor="let place of placeList">{{place}}</option>
+                  </select>
+                  <small class="text-muted">India</small>
+
+                </div>
+              </div>
+            </div>
+            <div class="col col-12 col-sm-12 col-lg-4 h-100 search-box">
+              <div class="card">
+                <div class="card-body">
+                  <b><small class="text-muted">TRAVEL DATE</small></b>
+                  <div class="input-group mb-3">
+                    <input type="date" class="form-control" placeholder="Date" [(ngModel)]="searchDetails.date"
+                      name="txtjourneydate" #jdate="ngModel" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col col-12 col-sm-12 text-center">
+            <a class="button" (click)="onSubmit()">Search</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Journeys</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Journey ID</th>
+          <th>Source</th>
+          <th>Destination</th>
+          <th>Bus</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let journey of matchedJourneys">
+          <td>{{journey.journeyID}}</td>
+          <td>{{journey.source}}</td>
+          <td>{{journey.dest}}</td>
+          <td>{{journey.bus.busName}}</td>
+          <td>{{journey.journeyDate}}</td>
+
+          <td><button class="btn btn-danger"
+              routerLink="/app-journey-main/app-journey-delete/{{journey.journeyID}}">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
+<div class="row d-flex justify-content-start">
+  <div class="col-lg-8 w-100">
+
+    <ul class="list-group shadow" *ngFor="let journey of matchedJourneys">
+
+      <!-- list group item-->
+      <li class="list-group-item">
+        <!-- Custom content-->
+        <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+          <div class="media-body order-2 order-lg-1">
+            <h5 class="mt-0 font-weight-bold mb-2"><span class=" busID">{{journey.journeyID}}</span> -
+              <b>{{journey.source | uppercase}}</b> - <b>{{journey.dest | uppercase}}</b> - {{journey.journeyDate}}
+            </h5>
+            <p class="font-italic  mb-0 small">{{journey.bus.busName}}</p>
+            <div class="d-flex align-items-center justify-content-between mt-1">
+              <h6 class="font-weight-bold my-2"></h6>
+
+            </div>
+            <div class="buttons">
+
+              <a class="delete-button"
+                routerLink="/app-journey-main/app-journey-delete/{{journey.journeyID}}">Delete</a>
+            </div>
+          </div>
+        </div>
+        <!-- End -->
+      </li>
+      <!-- End -->
+
+    </ul>
+    <!-- End -->
+  </div>
+</div>

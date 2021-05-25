@@ -1,0 +1,39 @@
+<header>
+  <nav class="navbar navbar-inner navbar-expand-md navbar-light">
+    <div class="mx-5">My-Bus</div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
+
+          <a [class.d-none]="isAdmin" *ngIf="authService.isUserLoggedIn()" class=" nav-link active" aria-current="page"
+            routerLink="/app-home">
+            Home</a>
+        </li>
+        <li class="nav-item">
+
+          <a *ngIf="authService.isUserLoggedIn()" class="nav-link active" aria-current="page"
+            routerLink="/app-myprofile">
+            MyProfile</a>
+        </li>
+        <li> <a [class.d-none]="!isAdmin" *ngIf="authService.isUserLoggedIn()" routerLink="/app-bus"
+            class="nav-item nav-link">Bus</a></li>
+        <li> <a [class.d-none]="!isAdmin" *ngIf="authService.isUserLoggedIn()" routerLink="/app-journey-main"
+            class="nav-item nav-link">Journey</a>
+        </li>
+        <li> <a [class.d-none]="!isAdmin" *ngIf="authService.isUserLoggedIn()" routerLink="/app-discount"
+            class="nav-item nav-link">Discounts</a>
+        </li>
+        <li><a routerLink="/app-contact-us" class="nav-link">Contact Us</a></li>
+        <li><a *ngIf="!authService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+        <li><a *ngIf="!authService.isUserLoggedIn()" routerLink="/register" class="nav-link">Register</a></li>
+        <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/logout" class="nav-link">LogOut</a></li>
+
+      </ul>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,67 @@
+<!-- <h3>Create Bus</h3>
+<div style="width: 400px;">
+  <form #createBusForm="ngForm">
+    <div class="form-group">
+      <label for="name">Bus Name</label>
+      <input type="text" class="form-control form-control-sm" id="busName" required [(ngModel)]="bus.busName"
+        name="txtbusName" #busName="ngModel">
+    </div>
+    <div class="mt-0" [class.d-none]="busName.valid || busName.untouched" style="color: red;font-size: 0.8rem;">
+      *Please
+      enter valid Bus Name
+    </div>
+    <div class="form-group">
+      <label for="busType">Bus Type</label>
+      <select class="form-select form-select-sm" [(ngModel)]="bus.busType" #busType="ngModel" id="busType"
+        name="txtbusType" required>
+        <option selected value="">Choose Bus type</option>
+        <option value="AC">AC</option>
+        <option value="SLEEPER">SLEEPER</option>
+      </select>
+    </div>
+    <div class="mt-0" [class.d-none]="busType.valid || busType.untouched" style="color: red;font-size: 0.8rem;">
+      *Please
+      enter valid Bus Type
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!createBusForm.form.valid"
+      (click)="onSubmit()">Submit</button>
+  </form>
+</div> -->
+<!------->
+<div class="container-fluid login-container">
+  <div class="row d-flex h-100 justify-content-center align-items-center">
+    <div class="col-md-6 login-form-2 ">
+      <h3>Add Bus
+        <hr>
+      </h3>
+      <form #createBusForm="ngForm">
+        <div class=" text-light fs-6" [class.d-none]="busName.valid || busName.untouched || !busName.errors">
+          *Please enter a valid Bus name
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control form-control-sm" id="busName" required [(ngModel)]="bus.busName"
+            name="txtbusName" #busName="ngModel" placeholder="Bus Name">
+          <label for="busName">Bus Name</label>
+        </div>
+        <div class=" text-light fs-6" [class.d-none]="busType.valid || busType.untouched || !busType.errors">
+          *Please choose a Bus type
+        </div>
+        <div class="form-floating">
+
+          <select class="form-select form-select-sm" [(ngModel)]="bus.busType" #busType="ngModel" id="busType"
+            name="txtbusType" required>
+            <option selected value="">Choose Bus type</option>
+            <option value="AC">AC</option>
+            <option value="SLEEPER">SLEEPER</option>
+          </select>
+          <label for="busType">Bus Type</label>
+        </div>
+        <div class="form-group text-center">
+          <input type="submit" class="btnSubmit" value="Add Bus" [disabled]="!createBusForm.form.valid || isLoading"
+            (click)="onSubmit()" [class.disabled-btn]="!createBusForm.form.valid || isLoading" />
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

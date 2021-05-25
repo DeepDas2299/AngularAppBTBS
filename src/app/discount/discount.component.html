@@ -1,0 +1,16 @@
+<div class="container-fluid ">
+  <div class="row h-100">
+    <div class="col col-12 col-lg-2 h-100 navigation px-0">
+      <nav class="navbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li> <a routerLink="/app-discount/app-discount-create" class="nav-item nav-link add-discount">Add Discount</a>
+          </li>
+          <li> <a routerLink="/app-discount/app-discount-list" class="nav-item nav-link ">View Discounts</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col col-12 col-lg-10 h-100 overflow-auto discount-dashboard" style="max-height:93%;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

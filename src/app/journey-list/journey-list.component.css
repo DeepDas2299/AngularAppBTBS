@@ -1,0 +1,119 @@
+.journey-container {
+  background: #287ad1;
+  min-height: 20rem;
+
+}
+
+.journey-search {
+  background: white;
+  min-height: 16rem;
+  border-radius: 1rem;
+  box-shadow: 6px 5px 8px#252525;
+}
+
+.container {
+  height: 100%;
+
+}
+
+.row {
+  width: 100%;
+}
+
+.journey-search-container {
+  min-height: 16rem;
+
+}
+
+.search-box {
+  min-height: 100%;
+  padding: 0;
+  position: relative;
+
+  cursor: pointer;
+}
+
+.search-box .card {
+  min-height: 9rem;
+}
+
+.search-box .card-body {
+  transition: all 0.2s ease-in-out;
+}
+
+.search-box .card-body:hover {
+  background-color: rgb(231, 239, 255);
+}
+
+.search-box input {
+  color: rgb(110, 110, 110);
+  font-weight: bold;
+}
+
+.button {
+  text-decoration: none;
+  border: none;
+  background: linear-gradient(to right, rgb(66, 122, 196), rgb(45, 45, 160));
+  box-shadow: 0px -1px 3px#474747;
+  padding: 0.2rem 2rem;
+  color: white;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  border-radius: 1.5rem;
+}
+
+
+.button:active {
+  background: linear-gradient(to right, rgb(50, 93, 150), rgb(29, 29, 102));
+}
+
+@media screen and (max-width: 600px) {
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .search-box {
+    display: block;
+  }
+
+
+}
+
+.text-gray {
+  color: #aaa;
+}
+
+.busID {
+  font-size: 2rem;
+  border: 2px solid rgb(255, 255, 255);
+  padding: 2px 7px;
+  border-radius: 0.4rem;
+}
+
+li {
+  margin-top: 5px;
+  background: #287ad1;
+  color: white;
+  transition: 0.2s ease;
+}
+
+li:hover {
+  background: #4a8ed8;
+}
+
+.delete-button {
+  font-size: 0.9rem;
+  margin-right: 1rem;
+  text-decoration: none;
+  color: white;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 2px 9px;
+  border-radius: 0.6rem;
+  transition: 0.2s ease all;
+}
+
+.delete-button:hover {
+  color: #1963b3;
+  background-color: white;
+}

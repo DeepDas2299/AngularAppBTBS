@@ -1,0 +1,71 @@
+<div class="container tickets h-100">
+  <div class="row">
+    <div class="col col-12 px-3 py-3">
+      <h5 class="heading">My Tickets</h5>
+      <div class="overflow-auto" style="max-height: 20rem;">
+        <div class="row" [class.d-none]="tickets.length > 0">
+          <article class="card fl-left d-flex justify-content-center align-items-center">
+
+            <h2>No Tickets</h2>
+          </article>
+        </div>
+        <div class="row" *ngFor="let ticket of tickets;index as i">
+          <article class="card fl-left">
+
+            <section class="date">
+              <time [attr.datetime]="journeyDate[i]">
+                <h5><small>{{journeyDate[i]}}</small></h5>
+              </time>
+            </section>
+
+            <section class=" card-cont">
+              <small>{{ticket.user.fname}} {{ticket.user.lname}}</small>
+              <h2 style="color: rgb(71, 71, 71);">{{source[i]}} to {{dest[i]}}</h2>
+              <div class="even-date">
+                <i class="fa fa-calendar"></i>
+                <time style="display: block;">
+                  <span>Booked at : {{timeStamp[i]}}</span>
+                </time>
+                <p style="display: block;">
+                  <b style="color: rgb(102, 102, 102);">Pickup : </b><span>{{ticket.pickupPoint}}
+                    {{pickupTime[i]}}</span>
+                </p>
+                <p style="display: block;">
+                  <b style="color: rgb(102, 102, 102);">Drop : </b><span>{{ticket.dropPoint}}
+                    {{dropTime[i]}}</span>
+                </p>
+              </div>
+              <div class="even-info" *ngFor="let passenger of passengers[i]">
+                <i class="fa fa-map-marker"></i>
+                <strong style="display: block;">{{passenger.name}} {{passenger.age}} {{passenger.gender}}</strong>
+
+              </div>
+              <a data-bs-toggle="modal" data-bs-target="#exampleModal">Cancel</a>
+
+            </section>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <b>Are you sure you want to <span style="color: red;">cancel</span> this Ticket?</b>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                      routerLink="/app-myprofile/app-ticket-cancel/{{ticket.ticketId}}">Confirm
+                      Cancellation</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

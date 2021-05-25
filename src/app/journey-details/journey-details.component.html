@@ -1,0 +1,139 @@
+<div class="container-fluid h-100">
+  <div class="row h-100 ">
+    <div style="width: 100%;" [class.d-none]="journeyList.length > 0" class="d-flex align-items-center">
+      <div class="card-body no-results text-center text-muted">
+        <img src="../../assets/img/search.png" width="100px">
+        No results available!
+      </div>
+    </div>
+    <div class="container-fluid" *ngFor="let journey of journeyList;index as i">
+      <div class="row">
+        <div class="col col-12 col-lg-10">
+          <div class="row">
+            <div class="card" style="width: 100%;">
+              <div class="card-body touring-details">
+                <b>
+                  <h3 class="card-title">{{journey.bus.busName}}<span
+                      class="bg-primary text-white fw-bold mx-4 px-3 verified">Safe</span>
+                    <span *ngIf="discountedPrice[i] > 0" class="bg-success text-white fw-bold px-3 verified"
+                      [class.d-none]="!(discountedPrice[i] < 1500)">Discounted</span></h3>
+                </b>
+                <small class="card-subtitle mb-2 text-muted other-info">{{journey.bus.busType | titlecase}}</small>
+                <small class="card-subtitle mb-2 text-muted other-info"><span
+                    class="seat"></span>{{journey.availableSeats}} seats
+                  left</small>
+                <div class="timing-details">
+                  <h3 class="d-flex">
+                    <div class="hr"><strong>{{pickupTime[i]}}</strong>,
+                      <span class="text-muted fs-6">{{dateList[i]}}</span>
+                    </div>
+                    <div><strong>{{dropTime[i]}}</strong>, <span class="text-muted fs-6">{{dateList[i]}}</span>
+                    </div>
+                  </h3>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="col col-12 col-lg-2 price-info-container">
+          <div class="container h-100">
+            <div class="row d-flex h-100">
+              <div class="col col-7 col-lg-12 text-end v">
+                <span class="text-muted fs-6 fw-bolder"><small>starting from</small></span>
+                <h4>
+                  <strong><small><s [class.d-none]="!(discountedPrice[i] < 1500)"
+                        class="text-danger">₹1500<br></s></small>₹{{discountedPrice[i]}}</strong>
+                </h4>
+              </div>
+              <div class="col col-5 col-lg-12 d-flex justify-content-center align-items-center">
+                <button class="px-5 text-white fw-bold seat-button" (click)="toggleSeatDisp(seatsButton,i)"
+                  #seatsButton><span [class.d-none]="toggleButton[i]">Select Seats</span><span
+                    [class.d-none]="!toggleButton[i]">Hide Seats</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12" [class.d-none]="!toggleButton[i]">
+          <div class="row">
+            <div class="card" style="width: 100%;">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col col-12 col-lg-5 places">
+                    <h6><strong>Select Pickup and Drop points</strong></h6>
+                    <div class="row">
+                      <div class="col col-12 col-md-6 ">
+                        <select class=" form-select pickup-list" size="3">
+                          <option (click)="selectedPickup = pickupDetail"
+                            *ngFor="let pickupDetail of pickupDetailsList[i] | keyvalue; index as j">
+                            <small><b>{{pickupDetail.value}}</b><br>
+                              {{pickupDetail.key}}</small>
+                          </option>
+                        </select>
+                      </div>
+                      <div class="col col-12 col-md-6">
+                        <select class="form-select drop-list" size="3">
+                          <option (click)="selectedDrop = dropDetail"
+                            *ngFor="let dropDetail of dropDetailsList[i] | keyvalue; index as k">
+                            <small><b>{{dropDetail.value}}</b><br>
+                              {{dropDetail.key}}</small>
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col col-12 col-lg-7 text-center">
+                    <div class="row">
+                      <div class="col col-12 select-seats d-flex flex-column justify-content-center align-items-center">
+                        <h6><strong>Select Seats</strong></h6>
+                        <div class="bus">
+                          <div class="seats">
+                            <div class="top-seats  text-align-end d-flex flex-wrap">
+                              <div class="seat d-flex align-items-center justify-content-center fs-6"
+                                *ngFor="let seat of seatList[i]" (click)="toggleSelectedSeat($event, i)"
+                                [class.seat-booked]="isSeatBooked(seat, journey)"
+                                disabled="isSeatBooked(seat, journey)">
+                                S{{seat.seatNo}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col col-12 book-seats">
+                        <div class="row">
+                          <div class="col col-12">
+                            <div class="row">
+                              <div class="col col-12">
+                                <h4 style="margin-bottom: 0em;">
+                                  <strong>₹{{price}}</strong>
+                                </h4>
+                                <span class="info"><small>Fare Price</small></span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col col-12 d-flex justify-content-center">
+                            <div class="px-5 text-white fw-bold book-button" (click)="onSubmit(journey)"
+                              [class.disabled-btn]="seatsToBook.length == 0  || isPlaceDetailsEmpty()">
+                              Book Ticket</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,22 @@
+.container-fluid {
+  background-color: #3a57af;
+  height: 92.4%;
+}
+
+.error {
+  font-size: 12rem;
+  color: white;
+}
+
+.message {
+  font-size: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-decoration: underline;
+}
