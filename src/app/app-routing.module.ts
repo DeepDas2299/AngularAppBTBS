@@ -27,12 +27,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RegisterComponent } from './register/register.component';
 import { TicketBookComponent } from './ticket-book/ticket-book.component';
 import { TicketCancelComponent } from './ticket-cancel/ticket-cancel.component';
+import { UserGuardService } from './user-guard.service';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/app-home', pathMatch: 'full' },
   {
-    path: 'app-home', component: JourneyComponent, canActivate: [AuthguardService]
+    path: 'app-home', component: JourneyComponent, canActivate: [AuthguardService, UserGuardService]
   },
   {
     path: 'login', component: LoginComponent, canActivate: [LoggedinguardService]
